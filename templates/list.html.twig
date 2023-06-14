@@ -1,0 +1,34 @@
+{% extends "base.html.twig" %}
+{% block body %}
+    <h1>Home</h1>
+    <p> Welcome to the home page!</p>
+    <div class="container-fluid">
+        <div class="row col-md-12 align-content-end">
+            <a href="/log-time">Log time</a>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <h2>identifier</h2>
+            </div>
+            <div class="col-md-4">
+                <h2>value</h2>
+            </div>
+            <div class="col-md-4">
+                <h2>actions</h2>
+            </div>
+        </div>
+        {% for workTime in workTimes %}
+        <div class="row">
+            <div class="col-md-4">
+                <p>{{ workTime.id }}</p>
+            </div>
+            <div class="col-md-4">
+                <p>{{ workTime.time }}</p>
+            </div>
+            <div class="col-md-4">
+                <a href="{{ path('edit_log_time', {id: workTime.id}) }}" class="icon-link">Edit</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}
